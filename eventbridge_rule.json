@@ -1,0 +1,14 @@
+EVENTBRIDGE_RULE = {
+    "EventPattern": {
+        "source": ["aws.eks"],
+        "detail-type": ["EKS Pod State Change"],
+        "detail": {
+            "status": ["OOMKilled", "CrashLoopBackOff", "NodeNotReady"]
+        }
+    },
+    "State": "ENABLED",
+    "Targets": [{
+        "Id": "LambdaTarget",
+        "Arn": "arn:aws:lambda:your-region:your-account-id:function:your-lambda-function"
+    }]
+}
