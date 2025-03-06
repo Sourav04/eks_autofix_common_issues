@@ -1,0 +1,27 @@
+IAM_PERMISSIONS = {
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "eks:DescribeCluster",
+                "eks:ListClusters",
+                "eks:ListNodegroups",
+                "eks:DescribeNodegroup",
+                "ec2:DescribeInstances",
+                "ec2:RebootInstances",
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "lambda:InvokeFunction"
+            ],
+            "Resource": "arn:aws:lambda:your-region:your-account-id:function:your-lambda-function"
+        }
+    ]
+}
